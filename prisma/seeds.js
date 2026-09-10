@@ -1,6 +1,6 @@
 import colors from "colors";
 import "dotenv/config";
-import { PrismaClient } from "../app/generated/prisma/client";
+import { PrismaClient } from "./generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL,
@@ -10,10 +10,10 @@ const prisma = new PrismaClient({
   adapter,
 });
 
-console.log("I AM RUNNING SEEDS.JS");
+console.log("I AM RUNNING SEEDS.JS".bgBlue);
 
 async function main() {
-  const demoUserId = "133767f0-768d-4338-a612-50c8dc722b84";
+  const demoUserId = "038c5c08-ab3a-404d-98d8-53a074798de6";
 
   // Create sample products
   await prisma.product.createMany({

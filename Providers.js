@@ -8,7 +8,7 @@ export function Providers({ children }) {
       social={{
         providers: ["google"],
       }}
-      redirectTo="/"
+      redirectTo="/dashboard"
     >
       {children}
     </NeonAuthUIProvider>
