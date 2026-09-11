@@ -1,7 +1,7 @@
 "use client";
 import { authClient } from "@/lib/auth/client";
 import { useRouter } from "next/navigation";
-
+import SideBare from "../../components/SideBare";
 const page = () => {
   const router = useRouter();
 
@@ -15,7 +15,8 @@ const page = () => {
   };
 
   return (
-    <div className="h-screen bg-linear-to-br from-purple-300 to-purple-500 flex justify-center items-center gap-3">
+    <div className="h-screen bg-linear-to-br from-purple-300 to-purple-500 ">
+      <SideBare />
       <h2>DASHBOARD INTERFACE</h2>
       <button className="btn btn-error text-gray-300" onClick={signOutFn}>
         Sign Out
