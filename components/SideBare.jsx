@@ -1,5 +1,6 @@
 import { Plus, LayoutDashboard, CirclePile, Settings } from "lucide-react";
 import Link from "next/link";
+import { UserButton } from "@neondatabase/auth-ui";
 const SideBare = ({ currentPath = "/dashboard" }) => {
   const navigationLinks = [
     { name: "dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -8,7 +9,7 @@ const SideBare = ({ currentPath = "/dashboard" }) => {
     { name: "settings", href: "/settings", icon: Settings },
   ];
   return (
-    <div className="w-48 bg-gray-200 fixed top-0 left-0 min-h-screen p-2">
+    <div className="w-64 bg-gray-200 fixed top-0 left-0 min-h-screen p-2">
       <div className="flex space-x-2 items-center mt-3 mb-6 border-b pb-3">
         <LayoutDashboard className="w-5 h-5" />
         <span className="uppercase text-sm font-mono">inventory</span>
@@ -29,6 +30,25 @@ const SideBare = ({ currentPath = "/dashboard" }) => {
           );
         })}
       </nav>
+
+      <div className="absolute bottom-2 left-2 ">
+        <UserButton
+          size={"full"}
+          sideOffset={10}
+          side="top"
+          disableDefaultLinks={false}
+          // additionalLinks={[
+          //   {
+          //     label: "Products",
+          //     href: "/products",
+          //   },
+          //   {
+          //     label: "Orders",
+          //     href: "/orders",
+          //   },
+          // ]}
+        />
+      </div>
     </div>
   );
 };
