@@ -1,6 +1,7 @@
 import SideBare from "../../components/SideBare";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth/server";
+import { deleteProduct } from "@/lib/Actions/actions.js";
 const page = async ({ currentPath = "/inventory" }) => {
   // GET THE CURRENT LOGGED USER
   const { data } = await auth.getSession();
@@ -16,8 +17,12 @@ const page = async ({ currentPath = "/inventory" }) => {
       sku: true,
       price: true,
       quantity: true,
+      id: true,
     },
   });
+
+  // console.log(allProducts);
+
   return (
     <div>
       <SideBare />
@@ -41,7 +46,7 @@ const page = async ({ currentPath = "/inventory" }) => {
         <div className="px-3">
           <table className="table table-zebra max-h-64">
             <thead>
-              <tr className="[&>th]:text-sm">
+              <tr className="[&>th]:text-sm [&>th]:bg-base-300">
                 <th>NAME</th>
                 <th>SKU</th>
                 <th>PRICE</th>
@@ -58,9 +63,16 @@ const page = async ({ currentPath = "/inventory" }) => {
                     <td>{product.price.toString()}</td>
                     <td>{product.quantity}</td>
                     <td>
-                      <button className="btn btn-sm btn-error btn-ghost">
-                        DELETE
-                      </button>
+                      <form action={deleteProduct}>
+                        <input
+                          type="hidden"
+                          name="terminatedProductId"
+                          value={product.id}
+                        />
+                        <button className="btn btn-sm btn-error btn-ghost">
+                          DELETE
+                        </button>
+                      </form>
                     </td>
                   </tr>
                 );

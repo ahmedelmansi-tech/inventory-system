@@ -23,11 +23,11 @@ const SideBare = () => {
           const NavigationLinkIcon = link.icon;
           const active = currentPath === link.href;
 
-          console.log({
-            currentPath,
-            href: link.href,
-            active,
-          });
+          // console.log({
+          //   currentPath,
+          //   href: link.href,
+          //   active,
+          // });
           return (
             <Link
               href={link.href}
