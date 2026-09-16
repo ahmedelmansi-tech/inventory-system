@@ -13,7 +13,7 @@ const prisma = new PrismaClient({
 console.log("I AM RUNNING SEEDS.JS".bgBlue);
 
 async function main() {
-  const demoUserId = "fc748af7-b7fb-4fe9-8b8b-d220d7e654dc";
+  const demoUserId = "8872e94d-20cc-46d7-98e9-79d6dedf3dac";
 
   // Create sample products
   await prisma.product.createMany({

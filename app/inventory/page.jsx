@@ -1,16 +1,25 @@
 import SideBare from "../../components/SideBare";
+import Search from "../../components/Search";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth/server";
-import { deleteProduct } from "@/lib/Actions/actions.js";
-const page = async ({ currentPath = "/inventory" }) => {
+import { deleteProduct, searchProduct } from "@/lib/Actions/product.js";
+const page = async ({ currentPath = "/inventory", searchParams }) => {
   // GET THE CURRENT LOGGED USER
   const { data } = await auth.getSession();
   const currentUserID = data?.user?.id;
+
+  const params = await searchParams;
+  const q = (params.q ?? "").trim();
+  // console.log(params.q);
 
   // GET ALL PRODUCTS
   const allProducts = await prisma.product.findMany({
     where: {
       userId: currentUserID,
+      name: {
+        contains: q,
+        mode: "insensitive",
+      },
     },
     select: {
       name: true,
@@ -20,8 +29,6 @@ const page = async ({ currentPath = "/inventory" }) => {
       id: true,
     },
   });
-
-  // console.log(allProducts);
 
   return (
     <div>
@@ -43,6 +50,10 @@ const page = async ({ currentPath = "/inventory" }) => {
             your business
           </p>
         </div>
+        <form action={searchProduct}>
+          <Search />
+        </form>
+
         <div className="px-3">
           <table className="table table-zebra max-h-64">
             <thead>
