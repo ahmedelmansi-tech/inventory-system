@@ -86,7 +86,7 @@ const page = async () => {
                 </div>
                 <div className="bold text-sm text-gray-400">Total Value</div>
                 <div className="flex items-center justify-center gap-1 text-green-500 text-xs">
-                  <span>+${totalPrice}</span>
+                  <span>+$ {Number(totalPrice).toFixed(2)}</span>
                   <TrendingUp className="w-5 h-5" />
                 </div>
               </div>
