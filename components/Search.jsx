@@ -1,4 +1,6 @@
-const Search = () => {
+const Search = ({ numberOfProducts }) => {
+  console.log("FROM SEARCH COM ", numberOfProducts);
+
   return (
     <div className="px-3 mb-6">
       <label className="input w-full border-0">
@@ -24,7 +26,9 @@ const Search = () => {
           className="grow input-ghost py-2"
           placeholder="Search"
         />
-        <button className="btn btn-neutral btn-sm">Query</button>
+        <button className="btn btn-neutral btn-sm">
+          {`${numberOfProducts <= 1 ? "Get all" : "Query"}`}
+        </button>
       </label>
     </div>
   );
