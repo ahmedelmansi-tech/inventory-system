@@ -13,13 +13,15 @@ const prisma = new PrismaClient({
 console.log("I AM RUNNING SEEDS.JS".bgBlue);
 
 async function main() {
+  // 8872e94d-20cc-46d7-98e9-79d6dedf3dac
+  // 49c9989a-ebad-4df9-be6f-0da3d704631b
   const demoUserId = "8872e94d-20cc-46d7-98e9-79d6dedf3dac";
 
   // Create sample products
   await prisma.product.createMany({
     data: Array.from({ length: 15 }).map((_, i) => ({
       userId: demoUserId,
-      name: `Product ${i + 1}`,
+      name: `laptop version - ${i + 1} * ${i}`,
       price: (Math.random() * 90 + 10).toFixed(2),
       quantity: Math.floor(Math.random() * 20),
       lowStock: 5,
