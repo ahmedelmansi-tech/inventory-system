@@ -1,5 +1,5 @@
 "use client";
-import { Plus, LayoutDashboard, CirclePile, Settings } from "lucide-react";
+import { Plus, LayoutDashboard, CirclePile, UserRound } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { UserButton } from "@neondatabase/auth-ui";
@@ -10,7 +10,7 @@ const SideBare = () => {
     { name: "dashboard", href: "/dashboard", icon: LayoutDashboard },
     { name: "inventory", href: "/inventory", icon: CirclePile },
     { name: "add product", href: "/add-product", icon: Plus },
-    { name: "settings", href: "/settings", icon: Settings },
+    { name: "account", href: "/account/security", icon: UserRound },
   ];
   return (
     <div className="w-48 bg-gray-200 fixed top-0 left-0 min-h-screen p-2">
