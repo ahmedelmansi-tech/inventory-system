@@ -6,7 +6,7 @@ import Pagination from "@/components/Pagination";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth/server";
 import { deleteProduct, searchProduct } from "@/lib/Actions/product.js";
-import { skip } from "node:test";
+
 const page = async ({ currentPath = "/inventory", searchParams }) => {
   // GET THE CURRENT LOGGED USER
   const { data } = await auth.getSession();
@@ -47,6 +47,9 @@ const page = async ({ currentPath = "/inventory", searchParams }) => {
       select,
       take: pageSize,
       skip: (currentPage - 1) * pageSize,
+      orderBy: {
+        createdAt: "desc",
+      },
     }),
     prisma.product.count({
       where,

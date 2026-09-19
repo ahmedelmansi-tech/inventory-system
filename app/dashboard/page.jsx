@@ -1,5 +1,5 @@
 import { TrendingUp } from "lucide-react";
-import SideBare from "../../components/SideBare";
+import SideBare from "@/components/SideBare";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth/server";
 const page = async () => {
